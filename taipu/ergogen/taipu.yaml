@@ -1,0 +1,157 @@
+units:
+  # Proxy Spacing Variables
+  kx: cx
+  ky: cy
+  # Padding Variables
+  px: kx + 5
+  py: ky + 5
+  $default_width: cx
+  $default_height: cy
+points:
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [70, -150]
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        clone_outer:
+          key:
+            splay: 8
+            asym: clone
+          rows.mod.skip: true
+        outer:
+          key.splay: 0
+          rows.mod:
+            key.skip: true
+            asym: source
+        pinky:
+          key.splay: -4
+          rows.mod.skip: true
+        ring:
+          key.splay: -4
+          key.stagger: 5
+          rows.mod.skip: true
+        middle:
+          key.stagger: 2.5
+          rows.mod.skip: true
+        index:
+          key.stagger: -2.5 
+        inner:
+          key.stagger: -2.5
+          rows.mod.skip: true
+      rows:
+        mod:
+        bottom:
+        home:
+        top:
+    thumbs:
+      key:
+        padding: 1ky
+        spread: 1kx
+      anchor:
+        ref: matrix_inner_mod
+        shift: [2, -2]
+      columns:
+        layer:
+          key:
+            splay: -15
+            shift: [0, -0.5]
+        space:
+          key:
+            splay: -15
+            shift: [3, -3]
+      rows:
+        cluster:
+  mirror: &mirror
+    ref: matrix_inner_top
+    distance: 5kx
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [kx, ky]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  board_left:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: thumbs_space_cluster
+          shift: [0.5px, -0.5py]
+        - ref: thumbs_space_cluster
+          shift: [0.5px, 0.5py]
+        - orient: 30
+          shift: [0px,3py]
+        - ref: matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_outer_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_index_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 3
+  board_right:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5px, -0.5py]
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5px, 0.5py]
+        - orient: 30
+          shift: [0px,3py]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_clone_outer_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_clone_outer_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_index_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 3
+  combo_right:
+    - name: board_right
+    - operation: subtract
+      name: keys
+  combo_left:
+    - name: board_left
+    - operation: subtract
+      name: keys
+  combo:
+    - name: combo_left
+    - operation: add
+      name: combo_right
+pcbs:
+  left_pcb:
+    outlines:
+      main:
+        outline: board_left
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        asym: source
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+  right_pcb:
+    outlines:
+      main:
+        outline: board_right
