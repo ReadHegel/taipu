@@ -1,5 +1,5 @@
 #!/bin/bash
 
-ergogen rafal.yaml
+ergogen .
 
 cp output/pcbs/*.kicad_pcb ../kicad

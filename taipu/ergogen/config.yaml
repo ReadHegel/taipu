@@ -1,0 +1,313 @@
+units:
+  # Proxy Spacing Variables
+  kx: cx
+  ky: cy
+  # Padding Variables
+  px: kx + 5
+  py: ky + 5
+  $default_width: cx
+  $default_height: cy
+points:
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [70, -150]
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        clone_outer:
+          key:
+            splay: 8
+            asym: clone
+            column_net: P017
+          rows.mod.skip: true
+        outer:
+          key.splay: 0
+          key.column_net: P020
+          rows.mod:
+            key.skip: true
+            asym: source
+        pinky:
+          key.splay: -4
+          key.column_net: P022
+          rows.mod.skip: true
+        ring:
+          key.splay: -4
+          key.column_net: P024
+          key.stagger: 5
+          rows.mod.skip: true
+        middle:
+          key.stagger: 2.5
+          key.column_net: P100
+          rows.mod.skip: true
+        index:
+          key.column_net: P011
+          rows.mod.column_net: P100
+          key.stagger: -2.5 
+        inner:
+          key.stagger: -2.5
+          key.column_net: P104
+          rows.mod.skip: true
+      rows:
+        mod:
+          row_net: P115
+        bottom:
+          row_net: P002
+        home:
+          row_net: P029
+        top:
+          row_net: P031
+    thumbs:
+      key:
+        padding: 1ky
+        spread: 1kx
+      anchor:
+        ref: matrix_inner_mod
+        shift: [2, -2]
+      columns:
+        layer:
+          key:
+            column_net: P011
+            splay: -15
+            shift: [0, -0.5]
+        space:
+          key:
+            column_net: P104
+            splay: -15
+            shift: [3, -3]
+      rows:
+        cluster:
+          row_net: P115
+  mirror: &mirror
+    ref: matrix_inner_top
+    distance: 5kx
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [kx, ky]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  board_left:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: thumbs_space_cluster
+          shift: [0.5px, -0.5py]
+        - ref: thumbs_space_cluster
+          shift: [0.5px, 0.5py]
+        - orient: 30
+          shift: [0px,3py]
+        - ref: matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_outer_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_outer_mod
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_index_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 3
+  board_right:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5px, -0.5py]
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5px, 0.5py]
+        - orient: 30
+          shift: [0px,3py]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_clone_outer_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_clone_outer_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_index_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 3
+  combo_right:
+    - name: board_right
+    - operation: subtract
+      name: keys
+  combo_left:
+    - name: board_left
+    - operation: subtract
+      name: keys
+  combo:
+    - name: combo_left
+    - operation: add
+      name: combo_right
+
+pcbs:
+  # LEFT PCB
+  left_pcb:
+    outlines:
+      main:
+        outline: board_left
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: -/^mirror.*/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: -/^mirror.*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      # Controller
+      nice_nano:
+        what: nice_nano
+        params:
+          orientation: up
+        where:
+          ref: matrix_inner_top
+          shift: [23, -15]
+          rotate: -90
+      # Battery jack
+      jstph:
+        what: jstph
+        where:
+          ref: matrix_ring_top
+          shift: [-15, 5]
+          rotate: 90
+        params:
+            side: B
+            pos: pos
+            neg: GND
+      battery_switch:
+        what: slider
+        where:
+          ref: matrix_inner_top
+          shift: [23, -34]
+          rotate: -180
+        params:
+            side: B
+            from: pos
+            to: RAW
+      # five mounting holes per pcb
+      holeTopLeft:
+        what: mountinghole
+        where:
+          ref: [matrix_outer_top]
+          shift: [0.5kx, -0.3ky]
+      holeTopRight:
+        what: mountinghole
+        where:
+          ref: [matrix_inner_top]
+          shift: [0.5kx, -0.3ky]
+      holeMiddle:
+        what: mountinghole
+        where:
+          ref: [matrix_middle_home]
+          shift: [0.5kx, -0.35ky]
+      holeBotLeft:
+        what: mountinghole
+        where:
+          ref: [matrix_outer_mod]
+          shift: [0.5kx, -0.3ky]
+      holeBotRight:
+        what: mountinghole
+        where:
+          ref: [thumbs_space_cluster]
+          shift: [-0.5kx, -0.3ky]
+
+  # RIGHT PCB
+  right_pcb:
+    outlines:
+      main:
+        outline: board_right
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: /^mirror_.*/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: /^mirror_.*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      # Controller
+      nice_nano:
+        what: nice_nano
+        params:
+          orientation: up
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [23, -15]
+          rotate: 90
+      # Battery jack
+      jstph:
+        what: jstph
+        where:
+          ref: mirror_matrix_ring_top
+          shift: [-18, 5]
+          rotate: 90
+        params:
+            side: B
+            pos: pos
+            neg: GND
+      battery_switch:
+        what: slider
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [23, -34]
+          rotate: -180
+        params:
+            side: B
+            from: pos
+            to: RAW
+      # Five mounting holes per pcb
+      holeTopRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_clone_outer_top]
+          shift: [0.5kx, -0.3ky]
+      holeTopLeft:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_inner_top]
+          shift: [0.5kx, -0.3ky]
+      holeMiddle:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_middle_home]
+          shift: [0.5kx, -0.35ky]
+      holeBotRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_clone_outer_bottom]
+          shift: [0.5kx, -0.3ky]
+      holeBotLeft:
+        what: mountinghole
+        where:
+          ref: [mirror_thumbs_space_cluster]
+          shift: [-0.5kx, -0.3ky]
