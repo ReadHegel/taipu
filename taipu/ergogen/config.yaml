@@ -188,9 +188,9 @@ pcbs:
       jstph:
         what: jstph
         where:
-          ref: matrix_ring_top
-          shift: [-15, 5]
-          rotate: 90
+          ref: matrix_inner_top
+          shift: [23, 4]
+          rotate: -90
         params:
             side: B
             pos: pos
@@ -202,7 +202,7 @@ pcbs:
           shift: [23, -34]
           rotate: -180
         params:
-            side: B
+            side: F
             from: pos
             to: RAW
       # five mounting holes per pcb
@@ -268,11 +268,11 @@ pcbs:
       jstph:
         what: jstph
         where:
-          ref: mirror_matrix_ring_top
-          shift: [-18, 5]
-          rotate: 90
+          ref: mirror_matrix_inner_top
+          shift: [23, 4]
+          rotate: -90
         params:
-            side: B
+            side: 'B'
             pos: pos
             neg: GND
       battery_switch:
@@ -282,7 +282,7 @@ pcbs:
           shift: [23, -34]
           rotate: -180
         params:
-            side: B
+            side: F
             from: pos
             to: RAW
       # Five mounting holes per pcb
