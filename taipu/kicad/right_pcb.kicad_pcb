@@ -73,9 +73,9 @@
 			(subtractmaskfromsilk no)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "")
+			(outputdirectory "right_gerbers/")
 		)
 	)
 	(net 0 "")
@@ -13447,6 +13447,18 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "fc28b9ea-2cf5-4ce4-9d7c-d4a9ba29cb83")
+	)
+	(gr_text "タイプ"
+		(at 297.6 148 2.5)
+		(layer "F.SilkS")
+		(uuid "3300e543-2f4b-486f-95dd-154ad6335673")
+		(effects
+			(font
+				(size 11 11)
+				(thickness 1.375)
+			)
+			(justify left bottom)
+		)
 	)
 	(segment
 		(start 383.050558 102.934455)
