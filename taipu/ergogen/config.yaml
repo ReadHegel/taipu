@@ -1,10 +1,29 @@
 units:
   # Proxy Spacing Variables
+  # cx = 18, cy = 17
   kx: cx
   ky: cy
   # Padding Variables
   px: kx + 5
   py: ky + 5
+  # Double padding for case
+  dpx: kx + 9
+  dpy: kx + 9
+
+  case_bottom_thick: 1
+  pcb_height: 1.5
+
+  # 1.5 (radius) <=> 3mm (diameter) 
+  # (2mm for M2 screw + 1 mm for screw insert) 
+  screw_rad: 1.5 
+  screw_standoff_rad: 2.5
+
+  # screw insert are 3 milimeters height
+  screw_standoff_height: case_bottom_thick + 3
+
+  # this way the wall should be at the same level what pcb is 
+  case_wall_height: screw_standoff_height + pcb_height + 0
+
   $default_width: cx
   $default_height: cy
 points:
@@ -115,6 +134,31 @@ outlines:
         - ref: matrix_index_mod
           shift: [-0.5px, -0.5py]
       fillet: 3
+  xl_board_left:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: thumbs_space_cluster
+          shift: [0.5dpx, -0.5dpy]
+        - ref: thumbs_space_cluster
+          shift: [0.5dpx, 0.5dpy]
+        - orient: 30
+          # manual intervention xD
+          # 3py + 0.5 * 4 = 3 * (17 + 5) + 2 = 68 
+          shift: [0,68]
+        - ref: matrix_middle_top
+          shift: [0.5dpx,0.5dpy]
+        - ref: matrix_middle_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: matrix_ring_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: matrix_outer_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: matrix_outer_mod
+          shift: [-0.5dpx,-0.5dpy]
+        - ref: matrix_index_mod
+          shift: [-0.5dpx, -0.5dpy]
+      fillet: 3
   board_right:
     - what: polygon
       operation: stack
@@ -138,6 +182,31 @@ outlines:
         - ref: mirror_matrix_index_mod
           shift: [-0.5px, -0.5py]
       fillet: 3
+  xl_board_right:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5dpx, -0.5dpy]
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5dpx, 0.5dpy]
+        - orient: 30
+          # manual intervention xD
+          # 3py + 0.5 * 4 = 3 * (17 + 5) + 2 = 68 
+          shift: [0,68]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5dpx,0.5dpy]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: mirror_matrix_clone_outer_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: mirror_matrix_clone_outer_bottom
+          shift: [-0.5dpx,-0.5dpy]
+        - ref: mirror_matrix_index_mod
+          shift: [-0.5dpx, -0.5dpy]
+      fillet: 3
   combo_right:
     - name: board_right
     - operation: subtract
@@ -151,6 +220,112 @@ outlines:
     - operation: add
       name: combo_right
 
+  # The mounting outlines
+  left_mounting: 
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [matrix_outer_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [matrix_inner_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [matrix_middle_home]
+        shift: [0.5kx, -0.35ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [matrix_outer_mod]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [thumbs_space_cluster]
+        shift: [-0.5kx, -0.3ky]
+  left_mounting_standoff: 
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [matrix_outer_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [matrix_inner_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [matrix_middle_home]
+        shift: [0.5kx, -0.35ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [matrix_outer_mod]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [thumbs_space_cluster]
+        shift: [-0.5kx, -0.3ky]
+  # right
+  right_mounting:
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [mirror_matrix_clone_outer_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [mirror_matrix_inner_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [mirror_matrix_middle_home]
+        shift: [0.5kx, -0.35ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [mirror_matrix_clone_outer_bottom]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_rad
+      where:
+        ref: [mirror_thumbs_space_cluster]
+        shift: [-0.5kx, -0.3ky]
+  right_mounting_standoff: 
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [mirror_matrix_clone_outer_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [mirror_matrix_inner_top]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [mirror_matrix_middle_home]
+        shift: [0.5kx, -0.35ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [mirror_matrix_clone_outer_bottom]
+        shift: [0.5kx, -0.3ky]
+    - what: circle
+      radius: screw_standoff_rad
+      where:
+        ref: [mirror_thumbs_space_cluster]
+        shift: [-0.5kx, -0.3ky]
 pcbs:
   # LEFT PCB
   left_pcb:
@@ -311,3 +486,83 @@ pcbs:
         where:
           ref: [mirror_thumbs_space_cluster]
           shift: [-0.5kx, -0.3ky]
+
+cases:
+  _left_bottom: 
+    - name: board_left
+      extrude: case_bottom_thick
+  _xl_left_bottom:
+    - name: xl_board_left
+      extrude: case_bottom_thick
+  _left_outer_wall: 
+    - name: xl_board_left
+      extrude: case_wall_height
+  _left_inner_wall: 
+    - name: board_left
+      extrude: case_wall_height
+  _left_wall:
+    - what: case
+      name: _left_outer_wall
+      operation: add
+    - what: case
+      name: _left_inner_wall
+      operation: subtract
+  _left_mounting: 
+    - name: left_mounting
+      extrude: screw_standoff_height
+  _left_standoff: 
+    - name: left_mounting_standoff
+      extrude: screw_standoff_height
+  left_case:
+    - what: case
+      name: _left_wall
+      operation: add
+    - what: case
+      name: _left_standoff
+      operation: add
+    - what: case
+      name: _left_mounting
+      operation: subtract
+    - what: case
+      name: _xl_left_bottom
+      operation: add
+
+  _right_bottom: 
+    - name: board_right
+      extrude: case_bottom_thick
+  _xl_right_bottom:
+    - name: xl_board_right
+      extrude: case_bottom_thick
+  _right_outer_wall: 
+    - name: xl_board_right
+      extrude: case_wall_height
+  _right_inner_wall: 
+    - name: board_right
+      extrude: case_wall_height
+  _right_wall:
+    - what: case
+      name: _right_outer_wall
+      operation: add
+    - what: case
+      name: _right_inner_wall
+      operation: subtract
+  _right_mounting: 
+    - name: right_mounting
+      extrude: screw_standoff_height
+  _right_standoff: 
+    - name: right_mounting_standoff
+      extrude: screw_standoff_height
+  right_case:
+    - what: case
+      name: _right_wall
+      operation: add
+    - what: case
+      name: _right_standoff
+      operation: add
+    - what: case
+      name: _right_mounting
+      operation: subtract
+    - what: case
+      name: _xl_right_bottom
+      operation: add
+
