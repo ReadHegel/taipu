@@ -1,0 +1,3 @@
+[submodule "taipu-zmk-config"]
+	path = taipu-zmk-config
+	url = git@github.com:ReadHegel/taipu-zmk-config.git
