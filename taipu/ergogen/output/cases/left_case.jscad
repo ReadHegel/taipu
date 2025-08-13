@@ -25,15 +25,15 @@ function left_mounting_standoff_extrude_4_outline_fn(){
 
 
 function left_mounting_extrude_4_outline_fn(){
-    return CAG.circle({"center":[187.3975335,-151.9198802],"radius":1.5})
+    return CAG.circle({"center":[187.3975335,-151.9198802],"radius":1.35})
 .union(
-    CAG.circle({"center":[97.4470206,-151.2926934],"radius":1.5})
+    CAG.circle({"center":[97.4470206,-151.2926934],"radius":1.35})
 ).union(
-    CAG.circle({"center":[150.257021,-108.1963316],"radius":1.5})
+    CAG.circle({"center":[150.257021,-108.1963316],"radius":1.35})
 ).union(
-    CAG.circle({"center":[186.257021,-95.3463316],"radius":1.5})
+    CAG.circle({"center":[186.257021,-95.3463316],"radius":1.35})
 ).union(
-    CAG.circle({"center":[90.3491925,-100.7890218],"radius":1.5})
+    CAG.circle({"center":[90.3491925,-100.7890218],"radius":1.35})
 ).extrude({ offset: [0, 0, 4] });
 }
 

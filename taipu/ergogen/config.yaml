@@ -10,12 +10,12 @@ units:
   dpx: kx + 9
   dpy: kx + 9
 
-  case_bottom_thick: 1
+  case_bottom_thick: 2
   pcb_height: 1.5
 
   # 1.5 (radius) <=> 3mm (diameter) 
-  # (2mm for M2 screw + 1 mm for screw insert) 
-  screw_rad: 1.5 
+  # (2mm for M2 screw + 0.7 mm for screw insert) 
+  screw_rad: 1.35 
   screw_standoff_rad: 2.5
 
   # screw insert are 3 milimeters height
