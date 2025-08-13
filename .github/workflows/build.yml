@@ -8,6 +8,6 @@ jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
     with:
-      build_matrix_path: zmk-config/build.yaml
-      base_dir: zmk-config
+      build_matrix_path: "zmk-config/build.yaml"
+      config_path: "zmk-config/config"
 
