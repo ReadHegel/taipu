@@ -6,7 +6,7 @@ env:
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    uses: .github/workflows/build-user-config.yml@v0.3
     with:
       build_matrix_path: "zmk-config/build.yaml"
       config_path: "zmk-config/config"
