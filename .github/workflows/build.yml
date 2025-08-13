@@ -2,10 +2,12 @@ name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  base_dir: zmk-config
+  ZEPHYR_BASE: zmk-config/zephyr
 
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
     with:
       build_matrix_path: zmk-config/build.yaml
+      base_dir: zmk-config
+
