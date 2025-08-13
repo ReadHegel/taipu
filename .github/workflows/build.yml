@@ -8,4 +8,4 @@ jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
     with:
-      build_matrix_path: ${{ env.BASE_DIR }}/build.yaml
+      build_matrix_path: ${{ env.base_dir }}/build.yaml
