@@ -1,16 +1,12 @@
-function xl_board_right_extrude_5_5_outline_fn(){
-    return new CSG.Path2D([[298.3737495,-152.3688562],[244.1337187,-169.7083391]]).appendArc([240.6221434,-168.3508018],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.7328607,-147.75796]).appendArc([228.3309369,-146.25796],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.3309369,-81.7257258]).appendArc([230.976162,-78.7467772],{"radius":3,"clockwise":true,"large":false}).appendPoint([289.580258,-71.767383]).appendArc([289.9350329,-71.7463316],{"radius":3,"clockwise":true,"large":false}).appendPoint([316.5496829,-71.7463316]).appendArc([316.9623881,-71.7748548],{"radius":3,"clockwise":true,"large":false}).appendPoint([334.6380321,-74.2298054]).appendArc([334.874307,-74.2723191],{"radius":3,"clockwise":true,"large":false}).appendPoint([394.1515062,-87.4065657]).appendArc([396.4733303,-90.7530481],{"radius":3,"clockwise":true,"large":false}).appendPoint([388.7173254,-145.9398908]).appendArc([385.8747373,-148.5196304],{"radius":3,"clockwise":true,"large":false}).appendPoint([299.1590325,-152.2291345]).appendArc([298.3737495,-152.3688561],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
-.extrude({ offset: [0, 0, 5.5] });
+function case_wall_right_extrude_8_5_outline_fn(){
+    return new CSG.Path2D([[298.3685493,-151.8716449],[243.2116018,-169.6641772]]).appendArc([239.6767706,-168.2814376],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.7594589,-148.9007041]).appendArc([228.3732832,-147.4283174],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.3732832,-82.8288312]).appendArc([230.962321,-79.8571128],{"radius":3,"clockwise":true,"large":false}).appendPoint([289.5525131,-71.7546132]).appendArc([289.9634753,-71.7263316],{"radius":3,"clockwise":true,"large":false}).appendPoint([316.5071006,-71.7263316]).appendArc([317.0034959,-71.7676847],{"radius":3,"clockwise":true,"large":false}).appendPoint([334.6810833,-74.7335909]).appendArc([334.8322053,-74.7629511],{"radius":3,"clockwise":true,"large":false}).appendPoint([394.6150081,-87.9779057]).appendArc([396.938295,-91.3247119],{"radius":3,"clockwise":true,"large":false}).appendPoint([389.3220709,-145.516963]).appendArc([386.4759716,-148.0968507],{"radius":3,"clockwise":true,"large":false}).appendPoint([299.1648513,-151.7293642]).appendArc([298.3685493,-151.8716449],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
+.subtract(
+    new CSG.Path2D([[296.3747465,-149.869439],[244.6192301,-166.5367302]]).appendArc([241.1015468,-165.1811527],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.7149116,-148.9230236]).appendArc([231.3129878,-147.4230236],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.3129878,-84.8568112]).appendArc([233.9203001,-81.8826228],{"radius":3,"clockwise":true,"large":false}).appendPoint([291.5615258,-74.2721432]).appendArc([291.9542135,-74.2463316],{"radius":3,"clockwise":true,"large":false}).appendPoint([314.5496829,-74.2463316]).appendArc([314.9623881,-74.2748548],{"radius":3,"clockwise":true,"large":false}).appendPoint([332.6433152,-76.7305391]).appendArc([332.8691876,-76.7707672],{"radius":3,"clockwise":true,"large":false}).appendPoint([391.8112579,-89.6114009]).appendArc([394.1434845,-92.9601688],{"radius":3,"clockwise":true,"large":false}).appendPoint([387.0837888,-143.192514]).appendArc([384.2491225,-145.7719043],{"radius":3,"clockwise":true,"large":false}).appendPoint([297.1582157,-149.728107]).appendArc([296.3747465,-149.869439],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
+).extrude({ offset: [0, 0, 8.5] });
 }
 
 
-function board_right_extrude_5_5_outline_fn(){
-    return new CSG.Path2D([[296.3747465,-149.869439],[244.6192301,-166.5367302]]).appendArc([241.1015468,-165.1811527],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.7149116,-148.9230236]).appendArc([231.3129878,-147.4230236],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.3129878,-84.8568112]).appendArc([233.9203001,-81.8826228],{"radius":3,"clockwise":true,"large":false}).appendPoint([291.5615258,-74.2721432]).appendArc([291.9542135,-74.2463316],{"radius":3,"clockwise":true,"large":false}).appendPoint([314.5496829,-74.2463316]).appendArc([314.9623881,-74.2748548],{"radius":3,"clockwise":true,"large":false}).appendPoint([332.6433152,-76.7305391]).appendArc([332.8691876,-76.7707672],{"radius":3,"clockwise":true,"large":false}).appendPoint([391.8112579,-89.6114009]).appendArc([394.1434845,-92.9601688],{"radius":3,"clockwise":true,"large":false}).appendPoint([387.0837888,-143.192514]).appendArc([384.2491225,-145.7719043],{"radius":3,"clockwise":true,"large":false}).appendPoint([297.1582157,-149.728107]).appendArc([296.3747465,-149.869439],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
-.extrude({ offset: [0, 0, 5.5] });
-}
-
-
-function right_mounting_standoff_extrude_4_outline_fn(){
+function right_mounting_standoff_extrude_7_outline_fn(){
     return CAG.circle({"center":[257.1165085,-151.9198802],"radius":2.5})
 .union(
     CAG.circle({"center":[367.2577893,-136.963252],"radius":2.5})
@@ -20,11 +16,11 @@ function right_mounting_standoff_extrude_4_outline_fn(){
     CAG.circle({"center":[258.257021,-95.3463316],"radius":2.5})
 ).union(
     CAG.circle({"center":[371.9896747,-103.2941376],"radius":2.5})
-).extrude({ offset: [0, 0, 4] });
+).extrude({ offset: [0, 0, 7] });
 }
 
 
-function right_mounting_extrude_4_outline_fn(){
+function right_mounting_extrude_7_outline_fn(){
     return CAG.circle({"center":[257.1165085,-151.9198802],"radius":1.35})
 .union(
     CAG.circle({"center":[367.2577893,-136.963252],"radius":1.35})
@@ -34,13 +30,25 @@ function right_mounting_extrude_4_outline_fn(){
     CAG.circle({"center":[258.257021,-95.3463316],"radius":1.35})
 ).union(
     CAG.circle({"center":[371.9896747,-103.2941376],"radius":1.35})
-).extrude({ offset: [0, 0, 4] });
+).extrude({ offset: [0, 0, 7] });
 }
 
 
-function xl_board_right_extrude_1_outline_fn(){
-    return new CSG.Path2D([[298.3737495,-152.3688562],[244.1337187,-169.7083391]]).appendArc([240.6221434,-168.3508018],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.7328607,-147.75796]).appendArc([228.3309369,-146.25796],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.3309369,-81.7257258]).appendArc([230.976162,-78.7467772],{"radius":3,"clockwise":true,"large":false}).appendPoint([289.580258,-71.767383]).appendArc([289.9350329,-71.7463316],{"radius":3,"clockwise":true,"large":false}).appendPoint([316.5496829,-71.7463316]).appendArc([316.9623881,-71.7748548],{"radius":3,"clockwise":true,"large":false}).appendPoint([334.6380321,-74.2298054]).appendArc([334.874307,-74.2723191],{"radius":3,"clockwise":true,"large":false}).appendPoint([394.1515062,-87.4065657]).appendArc([396.4733303,-90.7530481],{"radius":3,"clockwise":true,"large":false}).appendPoint([388.7173254,-145.9398908]).appendArc([385.8747373,-148.5196304],{"radius":3,"clockwise":true,"large":false}).appendPoint([299.1590325,-152.2291345]).appendArc([298.3737495,-152.3688561],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
-.extrude({ offset: [0, 0, 1] });
+function xl_board_right_extrude_2_outline_fn(){
+    return new CSG.Path2D([[298.3685493,-151.8716449],[243.2116018,-169.6641772]]).appendArc([239.6767706,-168.2814376],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.7594589,-148.9007041]).appendArc([228.3732832,-147.4283174],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.3732832,-82.8288312]).appendArc([230.962321,-79.8571128],{"radius":3,"clockwise":true,"large":false}).appendPoint([289.5525131,-71.7546132]).appendArc([289.9634753,-71.7263316],{"radius":3,"clockwise":true,"large":false}).appendPoint([316.5071006,-71.7263316]).appendArc([317.0034959,-71.7676847],{"radius":3,"clockwise":true,"large":false}).appendPoint([334.6810833,-74.7335909]).appendArc([334.8322053,-74.7629511],{"radius":3,"clockwise":true,"large":false}).appendPoint([394.6150081,-87.9779057]).appendArc([396.938295,-91.3247119],{"radius":3,"clockwise":true,"large":false}).appendPoint([389.3220709,-145.516963]).appendArc([386.4759716,-148.0968507],{"radius":3,"clockwise":true,"large":false}).appendPoint([299.1648513,-151.7293642]).appendArc([298.3685493,-151.8716449],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
+.extrude({ offset: [0, 0, 2] });
+}
+
+
+function xl_board_right_extrude_7_outline_fn(){
+    return new CSG.Path2D([[298.3685493,-151.8716449],[243.2116018,-169.6641772]]).appendArc([239.6767706,-168.2814376],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.7594589,-148.9007041]).appendArc([228.3732832,-147.4283174],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.3732832,-82.8288312]).appendArc([230.962321,-79.8571128],{"radius":3,"clockwise":true,"large":false}).appendPoint([289.5525131,-71.7546132]).appendArc([289.9634753,-71.7263316],{"radius":3,"clockwise":true,"large":false}).appendPoint([316.5071006,-71.7263316]).appendArc([317.0034959,-71.7676847],{"radius":3,"clockwise":true,"large":false}).appendPoint([334.6810833,-74.7335909]).appendArc([334.8322053,-74.7629511],{"radius":3,"clockwise":true,"large":false}).appendPoint([394.6150081,-87.9779057]).appendArc([396.938295,-91.3247119],{"radius":3,"clockwise":true,"large":false}).appendPoint([389.3220709,-145.516963]).appendArc([386.4759716,-148.0968507],{"radius":3,"clockwise":true,"large":false}).appendPoint([299.1648513,-151.7293642]).appendArc([298.3685493,-151.8716449],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
+.extrude({ offset: [0, 0, 7] });
+}
+
+
+function xs_board_right_extrude_7_outline_fn(){
+    return new CSG.Path2D([[295.3750435,-148.8698751],[244.9872919,-165.1668357]]).appendArc([241.4660091,-163.8124199],{"radius":3,"clockwise":true,"large":false}).appendPoint([233.080937,-149.289049]).appendArc([232.6790132,-147.789049],{"radius":3,"clockwise":true,"large":false}).appendPoint([232.6790132,-86.2049237]).appendArc([235.2661919,-83.233463],{"radius":3,"clockwise":true,"large":false}).appendPoint([292.5515972,-75.2748709]).appendArc([292.9644185,-75.2463316],{"radius":3,"clockwise":true,"large":false}).appendPoint([313.5496829,-75.2463316]).appendArc([313.9623881,-75.2748548],{"radius":3,"clockwise":true,"large":false}).appendPoint([331.6460979,-77.7309256]).appendArc([331.8664875,-77.7699647],{"radius":3,"clockwise":true,"large":false}).appendPoint([390.6756068,-90.4664804]).appendArc([393.0133162,-93.8164374],{"radius":3,"clockwise":true,"large":false}).appendPoint([386.2322151,-142.066479]).appendArc([383.4016192,-144.6456816],{"radius":3,"clockwise":true,"large":false}).appendPoint([296.1580418,-148.727569]).appendArc([295.3750436,-148.869875],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
+.extrude({ offset: [0, 0, 7] });
 }
 
 
@@ -50,7 +58,7 @@ function xl_board_right_extrude_1_outline_fn(){
                     
 
                 // creating part 0 of case _right_wall
-                let _right_wall__part_0 = _right_outer_wall_case_fn();
+                let _right_wall__part_0 = case_wall_right_extrude_8_5_outline_fn();
 
                 // make sure that rotations are relative
                 let _right_wall__part_0_bounds = _right_wall__part_0.getBounds();
@@ -64,68 +72,6 @@ function xl_board_right_extrude_1_outline_fn(){
                 let result = _right_wall__part_0;
                 
             
-
-                // creating part 1 of case _right_wall
-                let _right_wall__part_1 = _right_inner_wall_case_fn();
-
-                // make sure that rotations are relative
-                let _right_wall__part_1_bounds = _right_wall__part_1.getBounds();
-                let _right_wall__part_1_x = _right_wall__part_1_bounds[0].x + (_right_wall__part_1_bounds[1].x - _right_wall__part_1_bounds[0].x) / 2
-                let _right_wall__part_1_y = _right_wall__part_1_bounds[0].y + (_right_wall__part_1_bounds[1].y - _right_wall__part_1_bounds[0].y) / 2
-                _right_wall__part_1 = translate([-_right_wall__part_1_x, -_right_wall__part_1_y, 0], _right_wall__part_1);
-                _right_wall__part_1 = rotate([0,0,0], _right_wall__part_1);
-                _right_wall__part_1 = translate([_right_wall__part_1_x, _right_wall__part_1_y, 0], _right_wall__part_1);
-
-                _right_wall__part_1 = translate([0,0,0], _right_wall__part_1);
-                result = result.subtract(_right_wall__part_1);
-                
-            
-                    return result;
-                }
-            
-            
-
-                function _right_outer_wall_case_fn() {
-                    
-
-                // creating part 0 of case _right_outer_wall
-                let _right_outer_wall__part_0 = xl_board_right_extrude_5_5_outline_fn();
-
-                // make sure that rotations are relative
-                let _right_outer_wall__part_0_bounds = _right_outer_wall__part_0.getBounds();
-                let _right_outer_wall__part_0_x = _right_outer_wall__part_0_bounds[0].x + (_right_outer_wall__part_0_bounds[1].x - _right_outer_wall__part_0_bounds[0].x) / 2
-                let _right_outer_wall__part_0_y = _right_outer_wall__part_0_bounds[0].y + (_right_outer_wall__part_0_bounds[1].y - _right_outer_wall__part_0_bounds[0].y) / 2
-                _right_outer_wall__part_0 = translate([-_right_outer_wall__part_0_x, -_right_outer_wall__part_0_y, 0], _right_outer_wall__part_0);
-                _right_outer_wall__part_0 = rotate([0,0,0], _right_outer_wall__part_0);
-                _right_outer_wall__part_0 = translate([_right_outer_wall__part_0_x, _right_outer_wall__part_0_y, 0], _right_outer_wall__part_0);
-
-                _right_outer_wall__part_0 = translate([0,0,0], _right_outer_wall__part_0);
-                let result = _right_outer_wall__part_0;
-                
-            
-                    return result;
-                }
-            
-            
-
-                function _right_inner_wall_case_fn() {
-                    
-
-                // creating part 0 of case _right_inner_wall
-                let _right_inner_wall__part_0 = board_right_extrude_5_5_outline_fn();
-
-                // make sure that rotations are relative
-                let _right_inner_wall__part_0_bounds = _right_inner_wall__part_0.getBounds();
-                let _right_inner_wall__part_0_x = _right_inner_wall__part_0_bounds[0].x + (_right_inner_wall__part_0_bounds[1].x - _right_inner_wall__part_0_bounds[0].x) / 2
-                let _right_inner_wall__part_0_y = _right_inner_wall__part_0_bounds[0].y + (_right_inner_wall__part_0_bounds[1].y - _right_inner_wall__part_0_bounds[0].y) / 2
-                _right_inner_wall__part_0 = translate([-_right_inner_wall__part_0_x, -_right_inner_wall__part_0_y, 0], _right_inner_wall__part_0);
-                _right_inner_wall__part_0 = rotate([0,0,0], _right_inner_wall__part_0);
-                _right_inner_wall__part_0 = translate([_right_inner_wall__part_0_x, _right_inner_wall__part_0_y, 0], _right_inner_wall__part_0);
-
-                _right_inner_wall__part_0 = translate([0,0,0], _right_inner_wall__part_0);
-                let result = _right_inner_wall__part_0;
-                
-            
                     return result;
                 }
             
@@ -135,7 +81,7 @@ function xl_board_right_extrude_1_outline_fn(){
                     
 
                 // creating part 0 of case _right_standoff
-                let _right_standoff__part_0 = right_mounting_standoff_extrude_4_outline_fn();
+                let _right_standoff__part_0 = right_mounting_standoff_extrude_7_outline_fn();
 
                 // make sure that rotations are relative
                 let _right_standoff__part_0_bounds = _right_standoff__part_0.getBounds();
@@ -158,7 +104,7 @@ function xl_board_right_extrude_1_outline_fn(){
                     
 
                 // creating part 0 of case _right_mounting
-                let _right_mounting__part_0 = right_mounting_extrude_4_outline_fn();
+                let _right_mounting__part_0 = right_mounting_extrude_7_outline_fn();
 
                 // make sure that rotations are relative
                 let _right_mounting__part_0_bounds = _right_mounting__part_0.getBounds();
@@ -181,7 +127,7 @@ function xl_board_right_extrude_1_outline_fn(){
                     
 
                 // creating part 0 of case _xl_right_bottom
-                let _xl_right_bottom__part_0 = xl_board_right_extrude_1_outline_fn();
+                let _xl_right_bottom__part_0 = xl_board_right_extrude_2_outline_fn();
 
                 // make sure that rotations are relative
                 let _xl_right_bottom__part_0_bounds = _xl_right_bottom__part_0.getBounds();
@@ -193,6 +139,91 @@ function xl_board_right_extrude_1_outline_fn(){
 
                 _xl_right_bottom__part_0 = translate([0,0,0], _xl_right_bottom__part_0);
                 let result = _xl_right_bottom__part_0;
+                
+            
+                    return result;
+                }
+            
+            
+
+                function _right_next_to_wall_standoff_case_fn() {
+                    
+
+                // creating part 0 of case _right_next_to_wall_standoff
+                let _right_next_to_wall_standoff__part_0 = _xl_right_bottom_pcb_bot_h_case_fn();
+
+                // make sure that rotations are relative
+                let _right_next_to_wall_standoff__part_0_bounds = _right_next_to_wall_standoff__part_0.getBounds();
+                let _right_next_to_wall_standoff__part_0_x = _right_next_to_wall_standoff__part_0_bounds[0].x + (_right_next_to_wall_standoff__part_0_bounds[1].x - _right_next_to_wall_standoff__part_0_bounds[0].x) / 2
+                let _right_next_to_wall_standoff__part_0_y = _right_next_to_wall_standoff__part_0_bounds[0].y + (_right_next_to_wall_standoff__part_0_bounds[1].y - _right_next_to_wall_standoff__part_0_bounds[0].y) / 2
+                _right_next_to_wall_standoff__part_0 = translate([-_right_next_to_wall_standoff__part_0_x, -_right_next_to_wall_standoff__part_0_y, 0], _right_next_to_wall_standoff__part_0);
+                _right_next_to_wall_standoff__part_0 = rotate([0,0,0], _right_next_to_wall_standoff__part_0);
+                _right_next_to_wall_standoff__part_0 = translate([_right_next_to_wall_standoff__part_0_x, _right_next_to_wall_standoff__part_0_y, 0], _right_next_to_wall_standoff__part_0);
+
+                _right_next_to_wall_standoff__part_0 = translate([0,0,0], _right_next_to_wall_standoff__part_0);
+                let result = _right_next_to_wall_standoff__part_0;
+                
+            
+
+                // creating part 1 of case _right_next_to_wall_standoff
+                let _right_next_to_wall_standoff__part_1 = _right_next_to_wall_standoff_full_case_fn();
+
+                // make sure that rotations are relative
+                let _right_next_to_wall_standoff__part_1_bounds = _right_next_to_wall_standoff__part_1.getBounds();
+                let _right_next_to_wall_standoff__part_1_x = _right_next_to_wall_standoff__part_1_bounds[0].x + (_right_next_to_wall_standoff__part_1_bounds[1].x - _right_next_to_wall_standoff__part_1_bounds[0].x) / 2
+                let _right_next_to_wall_standoff__part_1_y = _right_next_to_wall_standoff__part_1_bounds[0].y + (_right_next_to_wall_standoff__part_1_bounds[1].y - _right_next_to_wall_standoff__part_1_bounds[0].y) / 2
+                _right_next_to_wall_standoff__part_1 = translate([-_right_next_to_wall_standoff__part_1_x, -_right_next_to_wall_standoff__part_1_y, 0], _right_next_to_wall_standoff__part_1);
+                _right_next_to_wall_standoff__part_1 = rotate([0,0,0], _right_next_to_wall_standoff__part_1);
+                _right_next_to_wall_standoff__part_1 = translate([_right_next_to_wall_standoff__part_1_x, _right_next_to_wall_standoff__part_1_y, 0], _right_next_to_wall_standoff__part_1);
+
+                _right_next_to_wall_standoff__part_1 = translate([0,0,0], _right_next_to_wall_standoff__part_1);
+                result = result.subtract(_right_next_to_wall_standoff__part_1);
+                
+            
+                    return result;
+                }
+            
+            
+
+                function _xl_right_bottom_pcb_bot_h_case_fn() {
+                    
+
+                // creating part 0 of case _xl_right_bottom_pcb_bot_h
+                let _xl_right_bottom_pcb_bot_h__part_0 = xl_board_right_extrude_7_outline_fn();
+
+                // make sure that rotations are relative
+                let _xl_right_bottom_pcb_bot_h__part_0_bounds = _xl_right_bottom_pcb_bot_h__part_0.getBounds();
+                let _xl_right_bottom_pcb_bot_h__part_0_x = _xl_right_bottom_pcb_bot_h__part_0_bounds[0].x + (_xl_right_bottom_pcb_bot_h__part_0_bounds[1].x - _xl_right_bottom_pcb_bot_h__part_0_bounds[0].x) / 2
+                let _xl_right_bottom_pcb_bot_h__part_0_y = _xl_right_bottom_pcb_bot_h__part_0_bounds[0].y + (_xl_right_bottom_pcb_bot_h__part_0_bounds[1].y - _xl_right_bottom_pcb_bot_h__part_0_bounds[0].y) / 2
+                _xl_right_bottom_pcb_bot_h__part_0 = translate([-_xl_right_bottom_pcb_bot_h__part_0_x, -_xl_right_bottom_pcb_bot_h__part_0_y, 0], _xl_right_bottom_pcb_bot_h__part_0);
+                _xl_right_bottom_pcb_bot_h__part_0 = rotate([0,0,0], _xl_right_bottom_pcb_bot_h__part_0);
+                _xl_right_bottom_pcb_bot_h__part_0 = translate([_xl_right_bottom_pcb_bot_h__part_0_x, _xl_right_bottom_pcb_bot_h__part_0_y, 0], _xl_right_bottom_pcb_bot_h__part_0);
+
+                _xl_right_bottom_pcb_bot_h__part_0 = translate([0,0,0], _xl_right_bottom_pcb_bot_h__part_0);
+                let result = _xl_right_bottom_pcb_bot_h__part_0;
+                
+            
+                    return result;
+                }
+            
+            
+
+                function _right_next_to_wall_standoff_full_case_fn() {
+                    
+
+                // creating part 0 of case _right_next_to_wall_standoff_full
+                let _right_next_to_wall_standoff_full__part_0 = xs_board_right_extrude_7_outline_fn();
+
+                // make sure that rotations are relative
+                let _right_next_to_wall_standoff_full__part_0_bounds = _right_next_to_wall_standoff_full__part_0.getBounds();
+                let _right_next_to_wall_standoff_full__part_0_x = _right_next_to_wall_standoff_full__part_0_bounds[0].x + (_right_next_to_wall_standoff_full__part_0_bounds[1].x - _right_next_to_wall_standoff_full__part_0_bounds[0].x) / 2
+                let _right_next_to_wall_standoff_full__part_0_y = _right_next_to_wall_standoff_full__part_0_bounds[0].y + (_right_next_to_wall_standoff_full__part_0_bounds[1].y - _right_next_to_wall_standoff_full__part_0_bounds[0].y) / 2
+                _right_next_to_wall_standoff_full__part_0 = translate([-_right_next_to_wall_standoff_full__part_0_x, -_right_next_to_wall_standoff_full__part_0_y, 0], _right_next_to_wall_standoff_full__part_0);
+                _right_next_to_wall_standoff_full__part_0 = rotate([0,0,0], _right_next_to_wall_standoff_full__part_0);
+                _right_next_to_wall_standoff_full__part_0 = translate([_right_next_to_wall_standoff_full__part_0_x, _right_next_to_wall_standoff_full__part_0_y, 0], _right_next_to_wall_standoff_full__part_0);
+
+                _right_next_to_wall_standoff_full__part_0 = translate([0,0,0], _right_next_to_wall_standoff_full__part_0);
+                let result = _right_next_to_wall_standoff_full__part_0;
                 
             
                     return result;
@@ -264,6 +295,22 @@ function xl_board_right_extrude_1_outline_fn(){
 
                 right_case__part_3 = translate([0,0,0], right_case__part_3);
                 result = result.union(right_case__part_3);
+                
+            
+
+                // creating part 4 of case right_case
+                let right_case__part_4 = _right_next_to_wall_standoff_case_fn();
+
+                // make sure that rotations are relative
+                let right_case__part_4_bounds = right_case__part_4.getBounds();
+                let right_case__part_4_x = right_case__part_4_bounds[0].x + (right_case__part_4_bounds[1].x - right_case__part_4_bounds[0].x) / 2
+                let right_case__part_4_y = right_case__part_4_bounds[0].y + (right_case__part_4_bounds[1].y - right_case__part_4_bounds[0].y) / 2
+                right_case__part_4 = translate([-right_case__part_4_x, -right_case__part_4_y, 0], right_case__part_4);
+                right_case__part_4 = rotate([0,0,0], right_case__part_4);
+                right_case__part_4 = translate([right_case__part_4_x, right_case__part_4_y, 0], right_case__part_4);
+
+                right_case__part_4 = translate([0,0,0], right_case__part_4);
+                result = result.union(right_case__part_4);
                 
             
                     return result;
