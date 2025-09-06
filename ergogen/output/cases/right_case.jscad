@@ -1,35 +1,35 @@
 function case_wall_right_extrude_8_5_outline_fn(){
     return new CSG.Path2D([[298.3685493,-151.8716449],[243.2116018,-169.6641772]]).appendArc([239.6767706,-168.2814376],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.7594589,-148.9007041]).appendArc([228.3732832,-147.4283174],{"radius":3,"clockwise":true,"large":false}).appendPoint([228.3732832,-82.8288312]).appendArc([230.962321,-79.8571128],{"radius":3,"clockwise":true,"large":false}).appendPoint([289.5525131,-71.7546132]).appendArc([289.9634753,-71.7263316],{"radius":3,"clockwise":true,"large":false}).appendPoint([316.5071006,-71.7263316]).appendArc([317.0034959,-71.7676847],{"radius":3,"clockwise":true,"large":false}).appendPoint([334.6810833,-74.7335909]).appendArc([334.8322053,-74.7629511],{"radius":3,"clockwise":true,"large":false}).appendPoint([394.6150081,-87.9779057]).appendArc([396.938295,-91.3247119],{"radius":3,"clockwise":true,"large":false}).appendPoint([389.3220709,-145.516963]).appendArc([386.4759716,-148.0968507],{"radius":3,"clockwise":true,"large":false}).appendPoint([299.1648513,-151.7293642]).appendArc([298.3685493,-151.8716449],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
 .subtract(
-    new CSG.Path2D([[296.3747465,-149.869439],[244.6192301,-166.5367302]]).appendArc([241.1015468,-165.1811527],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.7149116,-148.9230236]).appendArc([231.3129878,-147.4230236],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.3129878,-84.8568112]).appendArc([233.9203001,-81.8826228],{"radius":3,"clockwise":true,"large":false}).appendPoint([291.5615258,-74.2721432]).appendArc([291.9542135,-74.2463316],{"radius":3,"clockwise":true,"large":false}).appendPoint([314.5496829,-74.2463316]).appendArc([314.9623881,-74.2748548],{"radius":3,"clockwise":true,"large":false}).appendPoint([332.6433152,-76.7305391]).appendArc([332.8691876,-76.7707672],{"radius":3,"clockwise":true,"large":false}).appendPoint([391.8112579,-89.6114009]).appendArc([394.1434845,-92.9601688],{"radius":3,"clockwise":true,"large":false}).appendPoint([387.0837888,-143.192514]).appendArc([384.2491225,-145.7719043],{"radius":3,"clockwise":true,"large":false}).appendPoint([297.1582157,-149.728107]).appendArc([296.3747465,-149.869439],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
+    new CSG.Path2D([[296.4747119,-149.9693984],[244.5824294,-166.6737088]]).appendArc([241.0650962,-165.3180185],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.578309,-148.886421]).appendArc([231.1763852,-147.386421],{"radius":3,"clockwise":true,"large":false}).appendPoint([231.1763852,-84.243667]).appendArc([233.8099115,-81.266135],{"radius":3,"clockwise":true,"large":false}).appendPoint([291.4744726,-74.1687996]).appendArc([291.8409463,-74.1463316],{"radius":3,"clockwise":true,"large":false}).appendPoint([314.6496829,-74.1463316]).appendArc([315.0623881,-74.1748548],{"radius":3,"clockwise":true,"large":false}).appendPoint([332.7430373,-76.6305005]).appendArc([332.9694563,-76.6708478],{"radius":3,"clockwise":true,"large":false}).appendPoint([391.924821,-89.525895]).appendArc([394.2565011,-92.8745439],{"radius":3,"clockwise":true,"large":false}).appendPoint([387.1689463,-143.3051167]).appendArc([384.3338723,-145.8845254],{"radius":3,"clockwise":true,"large":false}).appendPoint([297.2582386,-149.8281606]).appendArc([296.4747119,-149.9693984],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
 ).extrude({ offset: [0, 0, 8.5] });
 }
 
 
 function right_mounting_standoff_extrude_7_outline_fn(){
-    return CAG.circle({"center":[257.1165085,-151.9198802],"radius":2.5})
+    return CAG.circle({"center":[257.1165085,-151.9198802],"radius":4})
 .union(
-    CAG.circle({"center":[367.2577893,-136.963252],"radius":2.5})
+    CAG.circle({"center":[367.2577893,-136.963252],"radius":4})
 ).union(
-    CAG.circle({"center":[294.257021,-108.1963316],"radius":2.5})
+    CAG.circle({"center":[294.257021,-108.1963316],"radius":4})
 ).union(
-    CAG.circle({"center":[258.257021,-95.3463316],"radius":2.5})
+    CAG.circle({"center":[258.257021,-95.3463316],"radius":4})
 ).union(
-    CAG.circle({"center":[371.9896747,-103.2941376],"radius":2.5})
+    CAG.circle({"center":[371.9896747,-103.2941376],"radius":4})
 ).extrude({ offset: [0, 0, 7] });
 }
 
 
 function right_mounting_extrude_7_outline_fn(){
-    return CAG.circle({"center":[257.1165085,-151.9198802],"radius":1.35})
+    return CAG.circle({"center":[257.1165085,-151.9198802],"radius":1.5})
 .union(
-    CAG.circle({"center":[367.2577893,-136.963252],"radius":1.35})
+    CAG.circle({"center":[367.2577893,-136.963252],"radius":1.5})
 ).union(
-    CAG.circle({"center":[294.257021,-108.1963316],"radius":1.35})
+    CAG.circle({"center":[294.257021,-108.1963316],"radius":1.5})
 ).union(
-    CAG.circle({"center":[258.257021,-95.3463316],"radius":1.35})
+    CAG.circle({"center":[258.257021,-95.3463316],"radius":1.5})
 ).union(
-    CAG.circle({"center":[371.9896747,-103.2941376],"radius":1.35})
+    CAG.circle({"center":[371.9896747,-103.2941376],"radius":1.5})
 ).extrude({ offset: [0, 0, 7] });
 }
 

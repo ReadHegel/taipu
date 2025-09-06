@@ -6,6 +6,9 @@ units:
   # Padding Variables
   px: kx + 5
   py: ky + 5
+  # Padding Variables with buffer for 3d print
+  pxb: kx + 5.2
+  pyb: ky + 5.2
   # Double padding for case
   dpx: kx + 9
   dpy: ky + 9
@@ -18,9 +21,9 @@ units:
   pcb_height: 1.5
 
   # 1.5 (radius) <=> 3mm (diameter) 
-  # (2mm for M2 screw + 0.7 mm for screw insert) 
-  screw_rad: 1.35 
-  screw_standoff_rad: 2.5
+  # (2mm for M2 screw + 0.7 mm for screw insert + 0.3 mm for printing buffer) 
+  screw_rad: 1.5 
+  screw_standoff_rad: 4
 
   # screw insert are 3 milimeters height
   pcb_bottom_height: case_bottom_thick + 5
@@ -138,6 +141,29 @@ outlines:
         - ref: matrix_index_mod
           shift: [-0.5px, -0.5py]
       fillet: 3
+  board_left_with_buffer:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: thumbs_space_cluster
+          shift: [0.5pxb, -0.5pyb]
+        - ref: thumbs_space_cluster
+          shift: [0.5pxb, 0.5pyb]
+        - orient: 30
+          shift: [0pxb,3pyb]
+        - ref: matrix_middle_top
+          shift: [0.5pxb,0.5pyb]
+        - ref: matrix_middle_top
+          shift: [-0.5pxb,0.5pyb]
+        - ref: matrix_ring_top
+          shift: [-0.5pxb,0.5pyb]
+        - ref: matrix_outer_top
+          shift: [-0.5pxb,0.5pyb]
+        - ref: matrix_outer_mod
+          shift: [-0.5pxb,-0.5pyb]
+        - ref: matrix_index_mod
+          shift: [-0.5pxb, -0.5pyb]
+      fillet: 3
   xl_board_left:
     - what: polygon
       operation: stack
@@ -209,6 +235,29 @@ outlines:
         - ref: mirror_matrix_index_mod
           shift: [-0.5px, -0.5py]
       fillet: 3
+  board_right_with_buffer:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5pxb, -0.5pyb]
+        - ref: mirror_thumbs_space_cluster
+          shift: [0.5pxb, 0.5pyb]
+        - orient: 30
+          shift: [0pxb,3pyb]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5pxb,0.5pyb]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5pxb,0.5pyb]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5pxb,0.5pyb]
+        - ref: mirror_matrix_clone_outer_top
+          shift: [-0.5pxb,0.5pyb]
+        - ref: mirror_matrix_clone_outer_bottom
+          shift: [-0.5pxb,-0.5pyb]
+        - ref: mirror_matrix_index_mod
+          shift: [-0.5pxb, -0.5pyb]
+      fillet: 3
   xl_board_right:
     - what: polygon
       operation: stack
@@ -267,27 +316,37 @@ outlines:
     - operation: subtract
       name: keys
 
+  # Combo for inspecting 3d print buffer
+  combo_buffer_left: 
+    - name: board_left_with_buffer
+    - operation: subtract
+      name: board_left
+  combo_buffer_right: 
+    - name: board_right_with_buffer
+    - operation: subtract
+      name: board_right
+
   # Combo for case walls 
   case_wall_left: 
     - name: xl_board_left
     - operation: subtract
-      name: board_left
+      name: board_left_with_buffer
   case_wall_right: 
     - name: xl_board_right
     - operation: subtract
-      name: board_right
+      name: board_right_with_buffer
 
   # Combo for inspecting stand next to wall
   inspect_wall_left: 
     - name: xl_board_left
     - operation: subtract
-      name: board_left
+      name: board_left_with_buffer
     - operation: add
       name: xs_board_left
   inspect_wall_right: 
     - name: xl_board_right
     - operation: subtract
-      name: board_right
+      name: board_right_with_buffer
     - operation: add
       name: xs_board_right
 
